@@ -1,22 +1,37 @@
-const routes  = [
-    {
-        method: 'GET',
-        path: '/',
-        handler : () => {
-            return {
-                status : 'success',
-                message: 'Welcome to bookshelf-API',
-            };
-        }
-    },
+const {
+    addBookHandler,
+    getAllBooksHandler,
+    getBookByIdHandler,
+    editBookByIdHandler,
+    deleteBookByIdHandler,
+} = require('./handler');
+
+const routes = [
     {
         method: 'POST',
-        path: '/book',
-        handler : () => {}
-
-
-    }
-];
-
+        path: '/books',
+        handler: addBookHandler,
+    },
+    {
+        method: 'GET',
+        path: '/books',
+        handler: getAllBooksHandler,
+    },
+    {
+        method: 'GET',
+        path: '/books/{bookId}',
+        handler: getBookByIdHandler,
+    },
+    {
+        method: 'PUT',
+        path: '/books/{bookId}',
+        handler: editBookByIdHandler,
+    },
+    {
+        method: 'DELETE',
+        path: '/books/{bookId}',
+        handler: deleteBookByIdHandler,
+    },
+]
 
 module.exports = routes;

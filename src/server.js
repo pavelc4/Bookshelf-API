@@ -1,25 +1,20 @@
-const hapi = require ('hapi');
-const routes = require ('./routes');
-
+const Hapi = require("@hapi/hapi");
+const routes = require("./routes");
 
 const init = async () => {
-    const server = new hapi.Server({
-        port : 9000,
-        host: 'localhost',
+    const server = Hapi.server({
+        port: 5000,
+        host: "localhost",
         routes: {
-            cors : {
-                origin: ['*'],
-            }
-        }
+            cors: {
+                origin: ["*"],
+            },
+        },
     });
-
-
     server.route(routes);
 
-
     await server.start();
-    console.log(`Server started at ${server.info.uri}`);
+    console.log(`Server berjalan di ${server.info.uri}`);
 };
 
 init();
-
